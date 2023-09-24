@@ -2,9 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url(https://db.onlinewebfonts.com/c/3c05f50b2ea05446904a6cc59acd8323?family=Pangea+Afrikan+Trial+SemiBold);
 
-@import "3dCarrocel";
+@import '3dCarrocel';
+@import 'load';
 
 $Arial: "Arial", sans-serif;
+$Poppins: "Poppins", sans-serif;
 $Pangea: "Pangea Afrikan Trial SemiBold", sans-serif;
 $Bebas: "Bebas Neue", sans-serif;
 $lite: #333 !important;
@@ -44,9 +46,9 @@ $size: 48px;
     --neon-box-shadow: 0 0 0.5rem #313131;
     --neon-box-shadow-dark: 0 0 0.5rem #8a02f2;
     --h2-font: 3rem;
-    --font-neon-text-shadow: 0 0 10px rgba(18, 227, 255, 0.3), 0 0 20px rgba(18, 227, 255, 0.3),
-        0 0 30px rgba(18, 227, 255, 0.3), 0 0 40px rgba(18, 227, 255, 0.3), 0 0 70px rgba(18, 227, 255, 0.3),
-        0 0 80px rgba(18, 227, 255, 0.3), 0 0 100px rgba(18, 227, 255, 0.3), 0 0 150px rgba(18, 227, 255, 0.3);
+    --font-neon-text-shadow: 0 0 10px rgba(56, 56, 56, 0.3), 0 0 20px rgba(56, 56, 56, 0.3),
+        0 0 30px rgba(56, 56, 56, 0.3), 0 0 40px rgba(56, 56, 56, 0.3), 0 0 70px rgba(56, 56, 56, 0.3),
+        0 0 80px rgba(56, 56, 56, 0.3), 0 0 100px rgba(56, 56, 56, 0.3), 0 0 150px rgba(56, 56, 56, 0.3);
     --font-neon-text-shadow-dark: 0 0 10px rgba(200, 18, 255, 0.3), 0 0 20px rgba(200, 18, 255, 0.3),
         0 0 30px rgba(200, 18, 255, 0.3), 0 0 40px rgba(200, 18, 255, 0.3), 0 0 70px rgba(200, 18, 255, 0.3),
         0 0 80px rgba(200, 18, 255, 0.3), 0 0 100px rgba(200, 18, 255, 0.3), 0 0 150px rgba(200, 18, 255, 0.3);
@@ -279,64 +281,7 @@ body.dark-theme {
 }
 
 // Loading
-.loading {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 10000;
-    background: var(--bg-color);
 
-    .load {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        /*change these sizes to fit into your project*/
-        width: 100px;
-        height: 100px;
-    }
-    .load hr {
-        border: 0;
-        margin: 0;
-        width: 40%;
-        height: 40%;
-        position: absolute;
-        border-radius: 50%;
-        animation: spinner 2s ease infinite;
-    }
-
-    .load :first-child {
-        background: var(--blue);
-        animation-delay: -1.5s;
-    }
-    .load :nth-child(2) {
-        background: var(--yellow);
-        animation-delay: -1s;
-    }
-    .load :nth-child(3) {
-        background: var(--hover-color);
-        animation-delay: -0.5s;
-    }
-    .load :last-child {
-        background: var(--text-color-sec);
-    }
-
-    @keyframes spinner {
-        0%,
-        100% {
-            transform: translate(0);
-        }
-        25% {
-            transform: translate(160%, 0);
-        }
-        50% {
-            transform: translate(160%, 160%);
-        }
-        75% {
-            transform: translate(0, 160%);
-        }
-    }
-}
 
 form > div {
     margin: 40px 0;
@@ -413,20 +358,18 @@ header {
 
         a {
             color: var(--text-color);
-            font-family: $Bebas;
+            font-family: $Poppins;
             font-size: 1rem;
+            font-weight: 400;
             padding: 10px 20px;
+            transition: all .5s ease-in-out;
 
-            &:hover {
-                color: var(--hover-color);
-                text-shadow: 0 0 10px rgba(18, 227, 255, 0.6), 0 0 20px rgba(18, 227, 255, 0.6),
-                    0 0 30px rgba(18, 227, 255, 0.6), 0 0 40px rgba(18, 227, 255, 0.6), 0 0 70px rgba(18, 227, 255, 0.6),
-                    0 0 80px rgba(18, 227, 255, 0.6), 0 0 100px rgba(18, 227, 255, 0.6),
-                    0 0 150px rgba(18, 227, 255, 0.6);
-            }
-
+            &:hover,
             &.active {
-                color: var(--hover-color);
+                color: var(--bg-color);
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.8),
+                    0 0 40px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 0, 0, 0.8), 0 0 80px rgba(0, 0, 0, 0.8),
+                    0 0 100px rgba(0, 0, 0, 0.8), 0 0 150px rgba(0, 0, 0, 0.8);
             }
         }
     }
@@ -523,16 +466,17 @@ section {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    align-items: center;
     grid-gap: 4em;
     touch-action: none;
 
     .home-content {
         max-width: 600px;
+
         h1 {
-            font-family: $Bebas;
-            font-size: var(--big-font);
-            font-weight: 700;
+            font-family: $Pangea;
+            font-size: 6rem;
+            font-weight: 600;
+            line-height: 100px;
         }
 
         p {
@@ -613,7 +557,7 @@ section {
         }
 
         .social-icon {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             display: flex;
             justify-content: space-between;
             width: 120px;
@@ -713,7 +657,6 @@ section {
         height: 100%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        align-items: center;
         grid-gap: 1em 4em;
 
         span {
@@ -781,21 +724,23 @@ hr {
     border: 0.5px solid var(--text-color-sec-dark);
 }
 
-.max-width {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
 // Portfolio Section Start
 
 .portfolio {
     position: relative;
 
-    .btn-box {
+    span {
+        left: 150px;
+        top: 20px;
         position: absolute;
-        left: 40%;
-        bottom: 0;
+
+    }
+
+    .btn-box {
         display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 50px;
         .btn {
             background: none;
             color: var(--text-color);
@@ -846,20 +791,90 @@ hr {
     }
 }
 
+// Sobre Section Start
+
+.sobre {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 4em;
+
+    h1 {
+        font-family: $Bebas;
+        font-size: var(--big-font);
+        margin-bottom: 10px;
+    }
+    h2 {
+        font-family: $Pangea;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    p {
+        justify-content: center;
+        text-align: justify;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    a{
+        display: block;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        color: var(--bg-box);
+
+        &:hover{
+            color: var(--text-color-sec);
+        }
+    }
+    
+
+}
+
 // Footer Section Start
 
 footer {
     padding: 1.5rem 10%;
-    display: flex;
+    display: block;
+    text-align: center;
+
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background: var(--bg-box);
+    background: var(--text-color);
+
+    h1 {
+        font-size: 5rem;
+        color: var(--bg-color);
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        color: var(--bg-color);
+    }
 
     p {
         display: inline-flex;
         justify-content: center;
         color: var(--bg-color);
+    }
+
+    .btn-box {
+        margin: 50px 0;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+
+        .btn {
+            width: 180px;
+
+            background: var(--bg-color-dark);
+            color: var(--bg-color);
+            font-size: 0.9rem;
+        }
     }
 }
 
