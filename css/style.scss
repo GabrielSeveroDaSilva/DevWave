@@ -1100,6 +1100,11 @@ footer {
 
     .portfolio-gallery {
         grid-template-columns: 1fr !important;
+
+        .port-box {
+            min-height: 300px;
+
+        }
     }
 
     .sobre {
